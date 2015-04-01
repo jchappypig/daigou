@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150401103613) do
+ActiveRecord::Schema.define(version: 20150401111313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,10 @@ ActiveRecord::Schema.define(version: 20150401103613) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "casein_admin_user_id"
   end
 
+  add_index "orders", ["casein_admin_user_id"], name: "index_orders_on_casein_admin_user_id", using: :btree
+
+  add_foreign_key "orders", "casein_admin_users"
 end
