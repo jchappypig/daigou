@@ -9,7 +9,13 @@ module Casein
   
     def index
       @casein_page_title = 'Orders'
-  		@orders = Order.order(sort_order(:created_at)).paginate :page => params[:page]
+      if current_user.is_admin?
+  		  @orders = Order.all
+      else
+        @orders = Order.where(casein_admin_user: current_user)
+      end
+
+      @orders = @orders.order(sort_order(:created_at)).paginate :page => params[:page]
     end
   
     def show
