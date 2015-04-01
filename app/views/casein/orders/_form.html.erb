@@ -16,7 +16,7 @@
 			<%= casein_check_box f, f.object, :has_paid %>
 		</div>
 		<div class="col-lg-6">
-			<%= casein_text_field f, f.object, :status %>
+			<%= casein_collection_select f, f.object, 'order', :status, ['New', 'Posted'], :to_s, :to_s %>
 		</div>
 	</div>
 <% end %>

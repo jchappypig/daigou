@@ -31,6 +31,7 @@ module Casein
     def create
       @order = Order.new order_params
       @order.casein_admin_user = current_user
+      @order.status = @order.status ? @order.status : 'New'
     
       if @order.save
         flash[:notice] = 'Order created'
