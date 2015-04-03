@@ -9,14 +9,19 @@
 		<%= casein_text_field f, f.object, :amount %>
 	</div>
 </div>
+<div class="row">
+	<div class="col-lg-6">
+		<%= casein_text_area_big f, f.object, :comment %>
+	</div>
+</div>
 
 <% if current_user.is_admin? %>
 	<div class="row">
 		<div class="col-lg-6">
 			<%= casein_check_box f, f.object, :has_paid %>
 		</div>
-		<div class="col-lg-6">
-			<%= casein_collection_select f, f.object, 'order', :status, ['New', 'Posted'], :to_s, :to_s %>
-		</div>
 	</div>
+    <div class="col-lg-6">
+      <%= casein_collection_select f, f.object, 'order', :status, %w(New Posted), :to_s, :to_s %>
+    </div>
 <% end %>

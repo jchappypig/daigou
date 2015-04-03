@@ -67,7 +67,7 @@ module Casein
     private
       
       def order_params
-        params.require(:order).permit(:name, :amount, :has_paid, :status)
+        params.require(:order).permit(:name, :amount, :has_paid, :status, :comment)
       end
 
   end
