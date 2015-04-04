@@ -3,7 +3,7 @@ module Casein
     
     # Name of website or client — used throughout Casein.
     def casein_config_website_name
-      'Casein'
+      '老周代购'
     end
 
     # Filename of logo image. Ideally, it should be a transparent PNG around 140x30px
@@ -14,21 +14,21 @@ module Casein
     # The server hostname where Casein will run
     def casein_config_hostname
       if Rails.env.production?
-        'http://www.caseincms.com'
+        'http://daigou.herokuapp.com'
       else
-        'http://0.0.0.0:3000'
+        'http://localhost:3000'
       end
     end
 
     # The sender address used for email notifications
     def casein_config_email_from_address
-      'donotreply@caseincms.com'
+      'airwomanzhy@hotmail.com'
     end
   
     # The initial page the user is shown after they sign in or click the logo. Probably this should be set to the first tab.
     # Do not point this at casein/index!
     def casein_config_dashboard_url
-      url_for :controller => :casein, :action => :blank
+      url_for :controller => :orders, :action => :index
     end
   
     # A list of stylesheets to include. Do not remove the core casein/casein, but you can change the load order, if required.
