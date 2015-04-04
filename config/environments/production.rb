@@ -75,6 +75,7 @@ Rails.application.configure do
       :user_name            => ENV['MAIL_USERNAME'],
       :password             => ENV['MAIL_PASSWORD'],
       :authentication       => 'plain',
+      :openssl_verify_mode => 'none',
       :enable_starttls_auto => true
   }
 
