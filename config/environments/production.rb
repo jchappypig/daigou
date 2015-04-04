@@ -62,7 +62,7 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.default_url_options = {host: 'localhost:3000'}
+  config.action_mailer.default_url_options = {host: 'audaigou.herokuapp.com'}
   config.action_mailer.default_options = {from: ENV['MAIL_USERNAME']}
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
@@ -71,6 +71,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
       :address              => 'smtp.live.com',
       :port                 => 587,
+      :domain               => 'audaigou.herokuapp.com',
       :user_name            => ENV['MAIL_USERNAME'],
       :password             => ENV['MAIL_PASSWORD'],
       :authentication       => 'plain',
