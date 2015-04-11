@@ -1,6 +1,9 @@
 class Order < ActiveRecord::Base
   belongs_to :casein_admin_user, class_name: Casein::AdminUser
 
+  validates :name, presence: true
+  validates :amount, presence: true
+
   STATUS = [I18n.t('status.new'), I18n.t('status.posted')]
 
   scope :active, -> { where(cancelled: false) }

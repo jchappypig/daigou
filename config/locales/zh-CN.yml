@@ -107,3 +107,9 @@ zh-CN:
               too_short: '太短了'
             password_confirmation:
               confirmation: '密码不一致'
+        order:
+          attributes:
+            name:
+              blank: '不能为空'
+            amount:
+              blank: '不能为空'
