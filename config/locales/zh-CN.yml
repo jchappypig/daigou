@@ -81,6 +81,14 @@ zh-CN:
     create_order_success: "下单成功，等着发货吧。"
     sign_up_success: "恭喜您，您已经注册成功。赶紧下单吧~"
     sign_up_fail: "不好意思，注册失败了哦。请稍后再试。"
+    page_not_found: "404 頁面不存在"
+    page_not_found_sub: "您是不是迷路了？請輸入正確的網址，再試試哦。"
+    error_page_suggestion: "如果您是第一次來到老周代購，請通過這個地址"
+    create_order: "我要下單"
+    internal_server_error: "系統出錯啦"
+    internal_server_error_sub: "我們正在儘快查看出錯原因，請稍後再試。"
+    unprocessable_error: "無法處理當前請求"
+    unprocessable_error_sub: "不好意思，我們無法處理您的請求，請稍後再試。"
   activerecord:
     errors:
       models:

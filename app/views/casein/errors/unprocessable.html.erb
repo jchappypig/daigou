@@ -1,0 +1,20 @@
+<br/>
+<br/>
+<div class="container">
+  <div class="jumbotron" style="text-align: center;">
+    <h1><%= t('message.unprocessable_error') %></h1>
+    <br/>
+
+    <p><%= t('message.unprocessable_error_sub') %></p>
+
+    <p>
+      <small style="font-size: 0.7em;"><%= t('message.error_page_suggestion') %>
+        <code><%= link_to t('menu.sign_up'), sign_up_casein_admin_users_path %></code>
+      </small>
+    </p>
+    <br/>
+
+    <p>
+      <%= link_to t('message.create_order'), new_casein_order_path, class: 'btn btn-primary btn-l' %></p>
+  </div>
+</div>

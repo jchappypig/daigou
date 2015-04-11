@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  namespace :casein do
+  get 'errors/file_not_found'
+  end
+
+  namespace :casein do
+  get 'errors/unprocessable'
+  end
+
+  namespace :casein do
+  get 'errors/internal_server_error'
+  end
+
 	#Casein routes
 	namespace :casein do
 		resources :orders do
@@ -15,6 +27,10 @@ Rails.application.routes.draw do
 	end
 
   root 'casein/orders#index'
+
+  match '/404', to: 'casein/errors#file_not_found', via: :all
+  match '/422', to: 'casein/errors#unprocessable', via: :all
+  match '/500', to: 'casein/errors#internal_server_error', via: :all
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
