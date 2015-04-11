@@ -2,6 +2,9 @@
 
 <h2>
   <%= t('action.view_order') %>
+  <small>
+    <%= @order.status %>
+  </small>
 </h2>
 
 <%= form_for @order, :url => casein_order_path(@order) do |f| %>
