@@ -24,7 +24,7 @@
             <td><%= casein_table_cell_link order.casein_admin_user_id, casein_order_path(order) %></td>
         <% end %>
         <td class="delete">
-          <%= link_to(casein_show_row_icon("trash"), casein_order_path(order), :method => :delete, :data => {:confirm => "Are you sure you want to delete this order?"}) %>
+          <%= link_to(casein_show_row_icon("trash"), casein_order_path(order), :method => :delete, :data => {:confirm => t('action.confirm_delete_order')}) %>
         </td>
       </tr>
   <% end %>

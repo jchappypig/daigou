@@ -1,0 +1,104 @@
+<h2>View user</h2>
+
+<%= form_for @casein_admin_user do |f| %>
+
+	<div class="row">
+  		<div class="col-lg-6">
+			<%= casein_text_field f, f.object, :login, {:size => 30, :casein_label => "Username"} %>
+		</div>
+		<div class="col-lg-6">
+			<%= casein_text_field f, f.object, :name %>
+		</div>
+	</div>
+
+	<div class="row">
+  		<div class="col-lg-6">
+			<%= casein_text_field f, f.object, :email %>
+		</div>
+		<div class="col-lg-6">
+			<%= casein_time_zone_select f, f.object, :time_zone, ActiveSupport::TimeZone.us_zones %>
+		</div>
+	</div>
+
+	<% if @session_user.is_admin? && (@casein_admin_user.is_admin? == false || Casein::AdminUser.has_more_than_one_admin) %>
+		<div class="row">
+  			<div class="col-lg-6">
+				<%= casein_select f, f.object, :access_level, casein_get_access_level_array, {:casein_label => "Role"} %>
+			</div>
+			<div class="col-lg-6">
+			</div>
+		</div>
+	<% end %>
+
+	<p class="submits">
+	  	<%= link_to 'Cancel', casein_admin_users_path, :class => 'btn btn-mini btn-danger' %>
+		<%= f.submit "Save changes", :class => "btn btn-mini btn-primary" %>
+	</p>
+<% end %>
+
+<% if @session_user.is_admin? %>
+
+	<h2>Reset password <small>(admin action &mdash; use carefully)</small></h2>
+
+	<%= form_for @casein_admin_user, :url => reset_password_casein_admin_user_path(@casein_admin_user) do |f| %>
+
+		<div class="row">
+  			<div class="col-lg-6">
+				<%= casein_password_field f, f.object, :password, {:casein_label => "New password"} %>
+			</div>
+			<div class="col-lg-6">
+				<%= casein_password_field f, f.object, :password_confirmation, {:casein_label => "Repeat new password"} %>
+			</div>
+			<div class="col-lg-12 password-checkbox">
+				<div class="checkbox">
+		      		<label>
+		      			<%= check_box_tag :generate_random_password, "1", false, {:id => 'generate-random-password-checkbox'} %> Generate random password
+		      		</label>
+		    	</div>
+		    </div>
+		</div>
+		
+		<p class="submits">
+			<%= f.submit "Reset", :class => "btn btn-mini btn-warning" %>
+		</p>
+		
+	<% end %>
+	
+<% elsif @session_user.id == @casein_admin_user.id %>
+
+	<h2>Change password</h2>
+
+	<%= form_for @casein_admin_user, :url => update_password_casein_admin_user_path(@casein_admin_user) do |f| %>
+
+		<div class="row">
+  			<div class="col-lg-6">
+  				<div class="form-group">
+					<%= label_tag :form_current_password, "Current password" %>
+					<%= password_field_tag :form_current_password, "", {:class => 'form-control'} %>
+				</div>
+			</div>
+			<div class="col-lg-6">
+			</div>
+		</div>
+
+		<div class="row">
+  			<div class="col-lg-6">
+				<%= casein_password_field f, f.object, :password, {:casein_label => "New password"} %>
+			</div>
+			<div class="col-lg-6">
+				<%= casein_password_field f, f.object, :password_confirmation, {:casein_label => "Repeat new password"} %>
+			</div>
+		</div>
+		
+		<p class="submits">
+			<%= f.submit "Change", :class => "btn btn-mini btn-primary" %>
+		</p>
+
+	<% end %>
+<% end %>
+
+<%= content_for :sidebar do %>
+	<% if @session_user.is_admin? %>
+  		<li><%= link_to "#{casein_show_icon('th-list')}Back to list".html_safe, casein_admin_users_path %></li>
+	<% end %>
+<% end %>

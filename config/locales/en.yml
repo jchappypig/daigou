@@ -20,7 +20,55 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
-
-
-
+  view:
+    order: 'Orders'
+  create:
+    order: 'Add a new order'
+  order:
+    name: 'Name'
+    amount: 'Quantity'
+    comment: 'Comment'
+    status: 'Status'
+    has_paid: 'Paid'
+  user:
+    username: 'Username'
+    name: 'Name'
+    email: 'Email'
+    time_zone: 'Time zone'
+    role: 'Role'
+    password: "Password"
+    remember_me: "Remember me"
+  action:
+    cancel: 'Cancel'
+    create: 'Add a new order'
+    edit: 'Save changes'
+    list: 'Back to list'
+    reset_password: 'Reset password'
+    confirm_delete_order: "Are you sure you want to delete this order?"
+    forget_password: "Forgotten password?"
+  menu:
+    orders: 'Orders'
+    new_order: "New Order"
+    profile: "Profile"
+    sign_out: "Sign out"
+    sign_in: "Sign in"
+    users: "Users"
+  list:
+    order:
+      name: 'Name'
+      amount: 'Quantity'
+      status: 'Status'
+      paid: 'Paid'
+      user: 'Buyer'
+  status:
+    new: "New"
+    posted: "Posted"
+  message:
+    email_not_exists: "There is no user with that email"
+    reset_password_email_sent: "An email has been sent with instructions on how to reset your password"
+    multi_reset_password_email_sent: "Multiple accounts were found. Emails have been sent with intstructions on how to rest your password"
+    fields_required: "A field has been left empty"
+    password_change_success: "Password successfully updated"
+    unknown_token: "Your account could not be located. Try to copy and paste the URL directly from the email."
+    welcome: "Welcome"
+    hello: "Hello"

@@ -1,0 +1,56 @@
+<%= form_for @admin_user_session, :url => casein_admin_user_session_path do |f| %>
+	<% if @admin_user_session.errors.any? %>
+		<div id="error_messages" class="alert alert-danger">
+			<% @admin_user_session.errors.keys.each do |key| %>
+				<%= (key.to_s.humanize + " ") unless key == :base %>
+				<%=  @admin_user_session.errors[key].first %>
+			<% end %>
+		</div>
+	<% end %>
+
+	<% if flash[:warning] %>
+      <div id="error" class="alert alert-danger">
+        <%= flash[:warning] %>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div id="notice" class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+	
+	<div class="form-group">
+		<%= f.text_field :login, :placeholder => t('user.username'), :class => "form-control input-lg" %>
+	</div>
+	<div class="form-group">
+		<%= f.password_field :password, :placeholder => t('user.password'), :class => "form-control input-lg" %>
+	</div>
+
+	<div class="form-group">
+		<div class="checkbox-inline">
+		  <label>
+		    <%= f.check_box :remember_me %> <%= t('user.remember_me') %>
+		  </label>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<%= f.submit t('menu.sign_in'), :class => "btn btn-success btn-lg btn-block" %>
+	</div>
+
+	<div class="form-group">
+        <%= button_tag t('action.forget_password'), {type: 'button', class: 'btn btn-link', onclick: "toggleDiv('recover');" } %>
+	</div>
+	
+<% end %>
+
+<%= form_tag casein_password_reset_url do %>
+	<div id="recover" style="display:none;">
+		<div class="form-group">
+			<%= text_field_tag :recover_email, params[:recover_email], :placeholder => t('user.email'), :class => "form-control input-lg" %>
+		</div>
+		<div class="form-group">
+			<%= submit_tag t('action.reset_password'), :class => "btn btn-primary btn-lg btn-block" %>
+		</div>
+	</div>
+<% end %>

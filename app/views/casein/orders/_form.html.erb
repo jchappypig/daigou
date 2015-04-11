@@ -18,7 +18,7 @@
 <% if current_user.is_admin? %>
     <div class="row">
       <div class="col-lg-6">
-        <%= casein_collection_select f, f.object, 'order', :status, %w(New Posted), :to_s, :to_s, {casein_label: t('order.status')} %>
+        <%= casein_collection_select f, f.object, 'order', :status, Order::STATUS, :to_s, :to_s, {casein_label: t('order.status')} %>
       </div>
       <div class="col-lg-6">
         <%= casein_check_box f, f.object, :has_paid, {casein_label: t('order.has_paid')} %>

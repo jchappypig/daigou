@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title><%= casein_generate_page_title %></title>
+  <% casein_config_stylesheet_includes.each do |stylesheet| %>
+      <%= stylesheet_link_tag(stylesheet) %>
+  <% end %>
+
+  <% casein_config_javascript_includes.each do |javascript| %>
+      <%= javascript_include_tag(javascript) %>
+  <% end %>
+
+  <%= csrf_meta_tag %>
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+      <%= javascript_include_tag("casein/html5shiv") %>
+    <![endif]-->
+
+  <script type="text/javascript">
+      var current_controller = "<%= controller_name %>";
+  </script>
+</head>
+
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+  <% if @session_user != nil %>
+      <div class="container">
+        <div id="user-info">
+          <ul>
+            <li class="hidden-xs hidden-sm"><%= t('message.hello') %> <%= @session_user.name %></li>
+            <li><%= link_to t('menu.profile'), casein_admin_user_path(@session_user) %></li>
+            <%= render :partial => '/casein/layouts/top_navigation' %>
+            <% if @session_user.is_admin? %>
+                <li><%= link_to t('menu.users'), casein_admin_users_path %></li>
+            <% end %>
+            <li class="last-item signout"><%= link_to t('menu.sign_out'), casein_admin_user_session_path, :method => :delete %></li>
+          </ul>
+        </div>
+      </div>
+  <% end %>
+
+  <div class="container container-navbar-brand">
+    <%= link_to(image_tag(casein_config_logo, :alt => casein_config_website_name), {:controller => :casein}, :class => "navbar-brand") %>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <%= render :partial => '/casein/layouts/tab_navigation' %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div id="content">
+    <div class="row">
+      <% if content_for?(:sidebar) %>
+          <div id="right-column" class="col-md-2">
+            <ul class="nav nav-pills nav-stacked content-bottom-padding">
+              <%= yield :sidebar %>
+            </ul>
+          </div>
+          <div id="left-column" class="col-md-10 content-bottom-padding">
+      <% else %>
+          <div class="col-lg-12 content-bottom-padding">
+      <% end %>
+
+      <% if flash[:warning] %>
+          <div id="error" class="alert alert-danger">
+            <%= flash[:warning] %>
+          </div>
+      <% end %>
+      <% if flash[:notice] %>
+          <div id="notice" class="alert alert-success">
+            <%= flash[:notice] %>
+          </div>
+      <% end %>
+      <% if content_for?(:help) %>
+          <div id="help" class="alert alert-info">
+            <%= yield :help %>
+          </div>
+      <% end %>
+
+      <%= yield %>
+
+      </div>
+
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <hr/>
+          <footer>
+            <p><%= casein_get_footer_string(true) %></p>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<h2>Users<%= casein_pagination_details @users %></h2>
+
+<table class="table table-striped table-hover table-condensed">
+	<thead>
+		<tr>
+			<th><%= casein_sort_link 'Username', :login %></th>
+			<th><%= casein_sort_link 'Name', :name %></th>
+			<th><%= casein_sort_link 'Role', :access_level %></th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+
+	<% @users.each do |user| %>	
+		<tr>
+			<td><%= casein_table_cell_link user.login, casein_admin_user_path(user) %></td>
+			<td><%= casein_table_cell_link user.name, casein_admin_user_path(user) %></td>
+			<td><%= casein_table_cell_link casein_get_access_level_text(user.access_level), casein_admin_user_path(user) %></td>
+			<td class="delete">
+				<% if user.is_admin? == false || Casein::AdminUser.has_more_than_one_admin %>
+					<% confirm_message = "Are you sure you want to delete #{user.name}?" %>
+			
+					<% if user.id == @session_user.id %>
+						<% confirm_message += "\n\nWARNING: This is your user account. You will be signed out if you proceed." %>
+					<% end %>
+				
+					<%= link_to(casein_show_row_icon("trash"), casein_admin_user_path(user), :method => :delete, :data => { :confirm => confirm_message }) %>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<div class="text-center">
+	<%= will_paginate @users %>
+</div>
+
+<%= content_for :sidebar do %>
+  <li><%= link_to "#{casein_show_icon('plus-sign')}Add a new user".html_safe, new_casein_admin_user_path %></li>
+<% end %>
