@@ -69,12 +69,12 @@ module Casein
       @order = Order.find params[:order_id]
 
       @order.cancelled = true
-      if @order.save
+      if !@order.is_posted? && @order.save
         flash[:notice] = t('message.cancel_order_success')
         redirect_to casein_orders_path
       else
-        flash.now[:warning] = t('message.cancel_order_fail')
-        render :action => :index
+        flash[:warning] = t('message.cancel_order_fail')
+        redirect_to casein_orders_path
       end
     end
   

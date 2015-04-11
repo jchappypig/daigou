@@ -26,7 +26,10 @@
             <td><%= casein_table_cell_link casein_show_row_icon(true_or_false_icon(order.cancelled)), casein_order_path(order) %></td>
         <% end %>
         <td class="cancel">
-          <%= link_to(casein_show_row_icon('pause'), casein_order_path(order), :method => :cancel, :data => {:confirm => t('action.confirm_cancel_order')}) %>
+          <% if !order.is_posted? %>
+              <%= link_to(casein_show_row_icon('pause'), casein_order_path(order), :method => :cancel, :data => {:confirm => t('action.confirm_cancel_order')}) %>
+
+          <% end %>
         </td>
         <% if current_user.is_admin? %>
             <td class="delete">
