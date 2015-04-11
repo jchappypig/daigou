@@ -11,7 +11,7 @@ module Casein
 
     layout 'casein_main'
    
-    helper_method :current_admin_user_session, :current_user
+    helper_method :current_admin_user_session, :current_user, :true_or_false_icon
     before_filter :authorise
     before_filter :set_time_zone
     
@@ -68,6 +68,10 @@ module Casein
 
     def sort_order(default)
       "#{(params[:c] || default.to_s).gsub(/[\s;'\"]/,'')} #{'ASC' if params[:d] == 'up'} #{'DESC' if params[:d] == 'down'}"
+    end
+
+    def true_or_false_icon(boolean_value)
+      boolean_value ? 'ok' : 'remove'
     end
 
   end

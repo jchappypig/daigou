@@ -8,8 +8,8 @@
     <th><%= casein_sort_link t('list.order.paid'), :has_paid %></th>
     <th><%= casein_sort_link t('list.order.status'), :status %></th>
     <% if current_user.is_admin? %>
-        <th><%= casein_sort_link t('list.order.cancelled'), :cancelled %></th>
         <th><%= casein_sort_link t('list.order.user'), :casein_admin_user_id %></th>
+        <th><%= casein_sort_link t('list.order.cancelled'), :cancelled %></th>
     <% end %>
     <th>&nbsp;</th>
   </tr>
@@ -19,18 +19,20 @@
       <tr>
         <td><%= casein_table_cell_link order.name, casein_order_path(order) %></td>
         <td><%= casein_table_cell_link order.amount, casein_order_path(order) %></td>
-        <td><%= casein_table_cell_link order.has_paid, casein_order_path(order) %></td>
+        <td><%= casein_table_cell_link casein_show_row_icon(true_or_false_icon(order.has_paid)), casein_order_path(order) %></td>
         <td><%= casein_table_cell_link order.status, casein_order_path(order) %></td>
         <% if current_user.is_admin? %>
-            <td><%= casein_table_cell_link order.cancelled, casein_order_path(order) %></td>
-            <td><%= casein_table_cell_link order.casein_admin_user_id, casein_order_path(order) %></td>
+            <td><%= casein_table_cell_link order.casein_admin_user.name, casein_order_path(order) %></td>
+            <td><%= casein_table_cell_link casein_show_row_icon(true_or_false_icon(order.cancelled)), casein_order_path(order) %></td>
         <% end %>
         <td class="cancel">
-          <%= link_to(casein_show_row_icon("remove"), casein_order_path(order), :method => :cancel, :data => {:confirm => t('action.confirm_cancel_order')}) %>
+          <%= link_to(casein_show_row_icon('pause'), casein_order_path(order), :method => :cancel, :data => {:confirm => t('action.confirm_cancel_order')}) %>
         </td>
-        <td class="delete">
-          <%= link_to(casein_show_row_icon("trash"), casein_order_path(order), :method => :delete, :data => {:confirm => t('action.confirm_delete_order')}) %>
-        </td>
+        <% if current_user.is_admin? %>
+            <td class="delete">
+              <%= link_to(casein_show_row_icon('stop'), casein_order_path(order), :method => :delete, :data => {:confirm => t('action.confirm_delete_order')}) %>
+            </td>
+        <% end %>
       </tr>
   <% end %>
 </table>

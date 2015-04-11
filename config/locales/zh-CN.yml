@@ -20,6 +20,7 @@ zh-CN:
     random_password: "随机密码"
     address: "地址"
     new_password: "新密码"
+    current_password: "现有密码"
   action:
     cancel: '算了'
     create_order: '赶紧发货'

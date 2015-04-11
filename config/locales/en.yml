@@ -41,6 +41,7 @@ en:
     random_password: "Generate random password"
     address: "Address"
     new_password: "New password"
+    current_password: "Current password"
   action:
     cancel: 'Cancel'
     create_order: 'Add a new order'
