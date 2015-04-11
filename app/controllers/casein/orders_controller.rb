@@ -12,7 +12,7 @@ module Casein
       if current_user.is_admin?
   		  @orders = Order.all
       else
-        @orders = Order.where(casein_admin_user: current_user)
+        @orders = Order.where(casein_admin_user: current_user).active.order(created_at: :desc)
       end
 
       @orders = @orders.order(sort_order(:created_at)).paginate :page => params[:page]

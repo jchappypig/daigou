@@ -76,3 +76,4 @@ zh-CN:
     update_password_fail: "出错了 T_T。密码修改没有成功哦。请稍后再试。"
     has_been_deleted: "已删除成功。"
     cancel_order_fail: "出错了 T_T。订单没有取消成功哦。请稍后再试。"
+    create_order_success: "下单成功，等着发货吧。"

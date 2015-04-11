@@ -97,3 +97,4 @@ en:
     update_password_fail: "There were problems when trying to change your password"
     has_been_deleted: " has been deleted"
     cancel_order_fail: "There were problems when trying to cancel this order"
+    create_order_success: "Order created"
