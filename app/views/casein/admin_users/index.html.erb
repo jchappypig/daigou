@@ -1,4 +1,4 @@
-<h2>Users<%= casein_pagination_details @users %></h2>
+<h2><%= t('menu.users') %><%= casein_pagination_details @users %></h2>
 
 <table class="table table-striped table-hover table-condensed">
 	<thead>
@@ -35,5 +35,5 @@
 </div>
 
 <%= content_for :sidebar do %>
-  <li><%= link_to "#{casein_show_icon('plus-sign')}Add a new user".html_safe, new_casein_admin_user_path %></li>
+  <li><%= link_to "#{casein_show_icon('plus-sign')} #{t('action.create_user')}".html_safe, new_casein_admin_user_path %></li>
 <% end %>

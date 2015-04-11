@@ -31,7 +31,7 @@ module Daigou
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-    config.time_zone = 'Sydney'
+    config.time_zone = 'Beijing'
     I18n.config.enforce_available_locales = false
     I18n.default_locale = :'zh-CN'
   end
