@@ -1,5 +1,7 @@
 <!-- NOTE: the casein:scaffold generator automatically appends new controllers to this file. The SCAFFOLD_INSERT line must NOT be removed -->
 <!-- SCAFFOLD_INSERT -->
-<% if current_user %>
+<% if current_user.is_admin? %>
     <li id="tab-orders"><%= link_to t('menu.orders'), casein_orders_path %></li>
+    <li id="tab-orders"><%= link_to t('menu.new_orders'), casein_orders_path(posted: false) %></li>
+    <li id="tab-orders"><%= link_to t('menu.posted_orders'), casein_orders_path(posted: true) %></li>
 <% end %>

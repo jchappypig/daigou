@@ -42,6 +42,8 @@ zh-CN:
     sign_in: "登录"
     users: "用戶管理"
     sign_up: "注册"
+    new_orders: "新下單記錄"
+    posted_orders: "已寄出訂單記錄"
   list:
     order:
       name: '商品'

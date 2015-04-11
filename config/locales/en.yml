@@ -64,6 +64,8 @@ en:
     sign_in: "Sign in"
     users: "Users"
     sign_up: "Register"
+    new_orders: "New orders"
+    posted_orders: "Posted orders"
   list:
     order:
       name: 'Name'

@@ -10,12 +10,14 @@ module Casein
     def index
       @casein_page_title = t('menu.orders')
       if current_user.is_admin?
-  		  @orders = Order.all
+  		  @orders = Order.posted(params[:posted]).order(:cancelled, status: :desc, created_at: :desc)
       else
         @orders = Order.where(casein_admin_user: current_user).active.order(created_at: :desc)
       end
 
       @orders = @orders.order(sort_order(:created_at)).paginate :page => params[:page]
+
+      session[:return_to] = request.url
     end
   
     def show
@@ -71,7 +73,8 @@ module Casein
       @order.cancelled = true
       if !@order.is_posted? && @order.save
         flash[:notice] = t('message.cancel_order_success')
-        redirect_to casein_orders_path
+        # redirect_to casein_orders_path
+        redirect_back_or_default casein_orders_path
       else
         flash[:warning] = t('message.cancel_order_fail')
         redirect_to casein_orders_path
