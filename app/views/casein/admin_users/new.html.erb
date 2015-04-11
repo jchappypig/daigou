@@ -16,10 +16,18 @@
 			<%= casein_text_field form, @casein_admin_user, :email %>
 		</div>
 		<div class="col-lg-6">
-			<%= casein_time_zone_select form, @casein_admin_user, :time_zone, ActiveSupport::TimeZone.us_zones %>
+          <%= casein_text_field form, @casein_admin_user, :phone %>
 		</div>
 	</div>
 
+    <div class="row">
+      <div class="col-lg-6">
+        <%= casein_text_area_big form, @casein_admin_user, :address %>
+      </div>
+      <div class="col-lg-6">
+        <%= casein_time_zone_select form, @casein_admin_user, :time_zone, ActiveSupport::TimeZone.us_zones %>
+      </div>
+    </div>
 
 	<div class="row">
   		<div class="col-lg-6">

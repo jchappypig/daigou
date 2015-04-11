@@ -117,7 +117,7 @@ module Casein
       end
 
       def casein_admin_user_params
-        params.require(:casein_admin_user).permit(:login, :name, :email, :time_zone, :access_level, :password, :password_confirmation)
+        params.require(:casein_admin_user).permit(:login, :name, :email, :phone, :address, :time_zone, :access_level, :password, :password_confirmation)
       end
  
   end
