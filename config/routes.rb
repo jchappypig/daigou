@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
 	#Casein routes
 	namespace :casein do
-		resources :orders
+		resources :orders do
+      post '/' => 'orders#cancel'
+    end
 	end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -8,6 +8,7 @@
     <th><%= casein_sort_link t('list.order.paid'), :has_paid %></th>
     <th><%= casein_sort_link t('list.order.status'), :status %></th>
     <% if current_user.is_admin? %>
+        <th><%= casein_sort_link t('list.order.cancelled'), :cancelled %></th>
         <th><%= casein_sort_link t('list.order.user'), :casein_admin_user_id %></th>
     <% end %>
     <th>&nbsp;</th>
@@ -21,8 +22,12 @@
         <td><%= casein_table_cell_link order.has_paid, casein_order_path(order) %></td>
         <td><%= casein_table_cell_link order.status, casein_order_path(order) %></td>
         <% if current_user.is_admin? %>
+            <td><%= casein_table_cell_link order.cancelled, casein_order_path(order) %></td>
             <td><%= casein_table_cell_link order.casein_admin_user_id, casein_order_path(order) %></td>
         <% end %>
+        <td class="cancel">
+          <%= link_to(casein_show_row_icon("remove"), casein_order_path(order), :method => :cancel, :data => {:confirm => t('action.confirm_cancel_order')}) %>
+        </td>
         <td class="delete">
           <%= link_to(casein_show_row_icon("trash"), casein_order_path(order), :method => :delete, :data => {:confirm => t('action.confirm_delete_order')}) %>
         </td>

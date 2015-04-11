@@ -19,39 +19,40 @@ module Casein
     end
   
     def show
-      @casein_page_title = 'View order'
+      @casein_page_title = t('action.view_order')
       @order = Order.find params[:id]
     end
   
     def new
-      @casein_page_title = 'Add a new order'
+      @casein_page_title = t('action.create_order')
     	@order = Order.new
     end
 
     def create
       @order = Order.new order_params
       @order.casein_admin_user = current_user
-      @order.status = @order.status ? @order.status : 'New'
+      @order.status = @order.status ? @order.status : Order::STATUS.first
     
       if @order.save
-        flash[:notice] = 'Order created'
+        flash[:notice] = t('message.create_order_success')
         redirect_to casein_orders_path
       else
-        flash.now[:warning] = 'There were problems when trying to create a new order'
+        flash.now[:warning] = t('message.create_order_fail')
         render :action => :new
       end
     end
   
     def update
-      @casein_page_title = 'Update order'
+      @casein_page_title = t('action.view_order')
       
       @order = Order.find params[:id]
     
       if @order.update_attributes order_params
-        flash[:notice] = 'Order has been updated'
+
+        flash[:notice] = t('message.update_order_success')
         redirect_to casein_orders_path
       else
-        flash.now[:warning] = 'There were problems when trying to update this order'
+        flash.now[:warning] = t('message.update_order_fail')
         render :action => :show
       end
     end
@@ -60,8 +61,21 @@ module Casein
       @order = Order.find params[:id]
 
       @order.destroy
-      flash[:notice] = 'Order has been deleted'
+      flash[:notice] = t('message.delete_order_success')
       redirect_to casein_orders_path
+    end
+
+    def cancel
+      @order = Order.find params[:order_id]
+
+      @order.cancelled = true
+      if @order.save
+        flash[:notice] = t('message.cancel_order_success')
+        redirect_to casein_orders_path
+      else
+        flash.now[:warning] = 'There were problems when trying to cancel this order'
+        render :action => :index
+      end
     end
   
     private

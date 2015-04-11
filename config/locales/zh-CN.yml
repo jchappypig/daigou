@@ -27,7 +27,8 @@ zh-CN:
     edit: '确定咯'
     list: '返回列表'
     reset_password: '重置密码'
-    confirm_delete_order: "確定要取消訂單嗎？"
+    confirm_delete_order: "！！確定要永久訂單嗎？"
+    confirm_cancel_order: "確定要取消訂單嗎？"
     forget_password: "忘记密码了？"
     create_user: "添加用户"
     view_user: "用户资料"
@@ -45,6 +46,7 @@ zh-CN:
       status: '订单状态'
       paid: '付款状态'
       user: '买家'
+      cancelled: "已取消"
   status:
     posted: '已寄出'
     new: '新下单'
@@ -57,3 +59,8 @@ zh-CN:
     unknown_token: "您输入的网址不对哦。请从邮件复制粘贴过来。"
     welcome: "欢迎"
     hello: "您好"
+    create_order_fail: "呀，下单没成功。系统出错了，稍后再试。"
+    update_order_success: "订单修改成功"
+    update_order_fail: "订单没有修改成功哦。系统出错了，稍后再试。"
+    delete_order_success: "已删除订单"
+    cancel_order_success: "已取消订单"
