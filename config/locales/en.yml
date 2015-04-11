@@ -54,13 +54,16 @@ en:
     forget_password: "Forgotten password?"
     create_user: "Add a new user"
     view_user: "View User"
+    sign_up: "Sign up"
+    log_in: "Existing user"
   menu:
     orders: 'Orders'
     new_order: "New Order"
     profile: "Profile"
     sign_out: "Sign out"
-    sign_in: "Signin"
+    sign_in: "Sign in"
     users: "Users"
+    sign_up: "Register"
   list:
     order:
       name: 'Name'
@@ -98,3 +101,5 @@ en:
     has_been_deleted: " has been deleted"
     cancel_order_fail: "There were problems when trying to cancel this order"
     create_order_success: "Order created"
+    sign_up_success: "Sign up successfully"
+    sign_up_fail: "There were problems when trying to sign up"

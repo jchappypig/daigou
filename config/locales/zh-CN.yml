@@ -33,6 +33,7 @@ zh-CN:
     forget_password: "忘记密码了？"
     create_user: "添加用户"
     view_user: "用户资料"
+    sign_up: "注册"
   menu:
     orders: '訂單記錄'
     new_order: "下单"
@@ -40,6 +41,7 @@ zh-CN:
     sign_out: "註銷"
     sign_in: "登录"
     users: "用戶管理"
+    sign_up: "注册"
   list:
     order:
       name: '商品'
@@ -62,18 +64,36 @@ zh-CN:
     hello: "您好"
     create_order_fail: "呀，下单没成功。请稍后再试。"
     update_order_success: "订单修改成功"
-    update_order_fail: "出错了 T_T。订单没有修改成功哦。请稍后再试。"
+    update_order_fail: "不好意思。订单没有修改成功哦。请稍后再试。"
     delete_order_success: "已删除订单"
     cancel_order_success: "已取消订单"
     create_user_success_part1: "添加成功。用户名和密码，已通过邮件方式发送给"
     create_user_success_part2: " "
-    create_user_fail: "出错了 T_T。用户没有添加成功。请稍后再试 "
-    update_user_fail: "出错了 T_T。用户资料没有更新成功哦。请稍后再试。"
+    create_user_fail: "不好意思。用户没有添加成功。请稍后再试 "
+    update_user_fail: "不好意思。用户资料没有更新成功哦。请稍后再试。"
     update_user_success: "您的用户资料已经修改成功。"
     new_password_required: "请输入新密码"
     current_password_incorrect: "现有密码不对哦，您忘记了吗？"
     update_password_success: "密码修改成功。"
-    update_password_fail: "出错了 T_T。密码修改没有成功哦。请稍后再试。"
+    update_password_fail: "不好意思。密码修改没有成功哦。请稍后再试。"
     has_been_deleted: "已删除成功。"
-    cancel_order_fail: "出错了 T_T。订单没有取消成功哦。请稍后再试。"
+    cancel_order_fail: "不好意思。订单没有取消成功哦。请稍后再试。"
     create_order_success: "下单成功，等着发货吧。"
+    sign_up_success: "恭喜您，您已经注册成功。赶紧下单吧~"
+    sign_up_fail: "不好意思，注册失败了哦。请稍后再试。"
+  activerecord:
+    errors:
+      models:
+        casein/admin_user:
+          attributes:
+            login:
+              too_short: '太短了'
+            name:
+              blank: '不能为空'
+            email:
+              blank: '不能为空'
+              invalid: '格式不正确'
+            password:
+              too_short: '太短了'
+            password_confirmation:
+              confirmation: '密码不一致'

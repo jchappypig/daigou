@@ -3,7 +3,8 @@ require 'securerandom'
 module Casein
   class AdminUsersController < Casein::CaseinController
 
-    before_filter :needs_admin, :except => [:show, :destroy, :update, :update_password]
+    before_filter :authorise, :except => [:sign_up, :create_after_sign_up]
+    before_filter :needs_admin, :except => [:show, :destroy, :update, :update_password, :sign_up, :create_after_sign_up]
     before_filter :needs_admin_or_current_user, :only => [:show, :destroy, :update, :update_password]
  
     def index
@@ -16,18 +17,47 @@ module Casein
     	@casein_admin_user = Casein::AdminUser.new
     	@casein_admin_user.time_zone = Rails.configuration.time_zone
     end
-  
+
     def create
       generate_random_password if params[:generate_random_password]
 
       @casein_admin_user = Casein::AdminUser.new casein_admin_user_params
-    
+
       if @casein_admin_user.save
         flash[:notice] = t('message.create_user_success_part1') + @casein_admin_user.name + t('message.create_user_success_part2')
         redirect_to casein_admin_users_path
       else
         flash.now[:warning] = t('message.create_user_fail')
         render :action => :new
+      end
+    end
+
+    def sign_up
+      @casein_page_title = t('action.create_user')
+      @casein_admin_user = Casein::AdminUser.new
+      @casein_admin_user.time_zone = Rails.configuration.time_zone
+    end
+
+    def create_after_sign_up
+      generate_random_password if params[:generate_random_password]
+
+      @casein_admin_user = Casein::AdminUser.new casein_admin_user_params
+      @casein_admin_user.access_level = $CASEIN_USER_ACCESS_LEVEL_USER
+
+      if @casein_admin_user.save
+
+        @admin_user_session = Casein::AdminUserSession.new
+        @admin_user_session.login = casein_admin_user_params[:login]
+        @admin_user_session.password = casein_admin_user_params[:password]
+        @admin_user_session.remember_me = '0'
+
+        @admin_user_session.save
+
+        flash[:notice] = t('message.sign_up_success')
+        redirect_to casein_orders_path
+      else
+        flash.now[:warning] = t('message.sign_up_fail')
+        render :action => :sign_up
       end
     end
   

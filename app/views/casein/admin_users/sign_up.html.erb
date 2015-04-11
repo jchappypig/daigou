@@ -1,6 +1,6 @@
-<h2><%= t('action.create_user') %></h2>
+<h2><%= t('menu.sign_up') %></h2>
 
-<%= form_for @casein_admin_user do |form| %>
+<%= form_for @casein_admin_user, url: sign_up_casein_admin_users_path, method: :post do |form| %>
 
     <div class="row">
       <div class="col-lg-6">
@@ -31,14 +31,6 @@
 
     <div class="row">
       <div class="col-lg-6">
-        <%= casein_select form, @casein_admin_user, :access_level, casein_get_access_level_array, {:casein_label => t('user.role')} %>
-      </div>
-      <div class="col-lg-6">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-6">
         <%= casein_password_field form, @casein_admin_user, :password, {:casein_label => t('user.password')} %>
       </div>
       <div class="col-lg-6">
@@ -54,12 +46,11 @@
     </div>
 
     <p class="submits">
-      <%= link_to t('action.cancel'), casein_admin_users_path, :class => 'btn btn-mini btn-danger' %>
-      <%= form.submit t('action.create_user'), :class => "btn btn-mini btn-primary" %>
+      <%= form.submit t('menu.sign_up'), :class => "btn btn-mini btn-primary" %>
     </p>
 
 <% end %>
 
 <%= content_for :sidebar do %>
-    <li><%= link_to "#{casein_show_icon('th-list')} #{t('action.list')}".html_safe, casein_admin_users_path %></li>
+    <li><%= link_to "#{casein_show_icon('user')} #{t('menu.sign_in')}".html_safe, new_casein_admin_user_session_path %></li>
 <% end %>

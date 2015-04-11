@@ -13,10 +13,10 @@
 
     <div class="row">
       <div class="col-lg-6">
-        <%= casein_text_field f, f.object, :email, {:casein_label => t('user.email')} %>
+        <%= casein_email_field f, f.object, :email, {:casein_label => t('user.email')} %>
       </div>
       <div class="col-lg-6">
-        <%= casein_text_field f, f.object, :phone, {:casein_label => t('user.phone')} %>
+        <%= casein_telephone_field f, f.object, :phone, {:casein_label => t('user.phone')} %>
       </div>
     </div>
 

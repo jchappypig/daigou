@@ -5,6 +5,13 @@ Rails.application.routes.draw do
 		resources :orders do
       post '/' => 'orders#cancel'
     end
+
+    resources :admin_users do
+      collection do
+        get 'sign_up' => 'admin_users#sign_up'
+        post 'sign_up' => 'admin_users#create_after_sign_up'
+      end
+    end
 	end
 
   # The priority is based upon order of creation: first created -> highest priority.
