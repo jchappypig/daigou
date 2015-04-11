@@ -1,38 +1,38 @@
-<h2>View user</h2>
+<h2><%= t('action.view_user') %></h2>
 
 <%= form_for @casein_admin_user do |f| %>
 
     <div class="row">
       <div class="col-lg-6">
-        <%= casein_text_field f, f.object, :login, {:size => 30, :casein_label => "Username"} %>
+        <%= casein_text_field f, f.object, :login, {:size => 30, :casein_label => t('user.username')} %>
       </div>
       <div class="col-lg-6">
-        <%= casein_text_field f, f.object, :name %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-lg-6">
-        <%= casein_text_field f, f.object, :email %>
-      </div>
-      <div class="col-lg-6">
-        <%= casein_text_field f, f.object, :phone %>
+        <%= casein_text_field f, f.object, :name, {:casein_label => t('user.name')} %>
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-6">
-        <%= casein_text_area_big f, f.object, :address %>
+        <%= casein_text_field f, f.object, :email, {:casein_label => t('user.email')} %>
       </div>
       <div class="col-lg-6">
-        <%= casein_time_zone_select f, f.object, :time_zone, ActiveSupport::TimeZone.us_zones %>
+        <%= casein_text_field f, f.object, :phone, {:casein_label => t('user.phone')} %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <%= casein_text_area_big f, f.object, :address, {:casein_label => t('user.address')} %>
+      </div>
+      <div class="col-lg-6">
+        <%= casein_time_zone_select f, f.object, :time_zone, ActiveSupport::TimeZone.us_zones, {:casein_label => t('user.time_zone')} %>
       </div>
     </div>
 
     <% if @session_user.is_admin? && (@casein_admin_user.is_admin? == false || Casein::AdminUser.has_more_than_one_admin) %>
         <div class="row">
           <div class="col-lg-6">
-            <%= casein_select f, f.object, :access_level, casein_get_access_level_array, {:casein_label => "Role"} %>
+            <%= casein_select f, f.object, :access_level, casein_get_access_level_array, {:casein_label => t('user.role')} %>
           </div>
           <div class="col-lg-6">
           </div>
@@ -40,14 +40,14 @@
     <% end %>
 
     <p class="submits">
-      <%= link_to 'Cancel', casein_admin_users_path, :class => 'btn btn-mini btn-danger' %>
-      <%= f.submit "Save changes", :class => "btn btn-mini btn-primary" %>
+      <%= link_to t('action.cancel'), casein_admin_users_path, :class => 'btn btn-mini btn-danger' %>
+      <%= f.submit t('action.edit'), :class => "btn btn-mini btn-primary" %>
     </p>
 <% end %>
 
 <% if @session_user.is_admin? %>
 
-    <h2>Reset password
+    <h2><%= t('action.reset_password') %>
       <small>(admin action &mdash; use carefully)</small>
     </h2>
 
@@ -55,30 +55,30 @@
 
         <div class="row">
           <div class="col-lg-6">
-            <%= casein_password_field f, f.object, :password, {:casein_label => "New password"} %>
+            <%= casein_password_field f, f.object, :password, {casein_label: t('user.new_password')} %>
           </div>
           <div class="col-lg-6">
-            <%= casein_password_field f, f.object, :password_confirmation, {:casein_label => "Repeat new password"} %>
+            <%= casein_password_field f, f.object, :password_confirmation, {:casein_label => t('user.repeat_password')} %>
           </div>
           <div class="col-lg-12 password-checkbox">
             <div class="checkbox">
               <label>
                 <%= check_box_tag :generate_random_password, "1", false, {:id => 'generate-random-password-checkbox'} %>
-                Generate random password
+                <%= t('user.random_password') %>
               </label>
             </div>
           </div>
         </div>
 
         <p class="submits">
-          <%= f.submit "Reset", :class => "btn btn-mini btn-warning" %>
+          <%= f.submit t('action.reset_password'), :class => "btn btn-mini btn-warning" %>
         </p>
 
     <% end %>
 
 <% elsif @session_user.id == @casein_admin_user.id %>
 
-    <h2>Change password</h2>
+    <h2><%= t('action.reset_password') %></h2>
 
     <%= form_for @casein_admin_user, :url => update_password_casein_admin_user_path(@casein_admin_user) do |f| %>
 
@@ -111,6 +111,6 @@
 
 <%= content_for :sidebar do %>
     <% if @session_user.is_admin? %>
-        <li><%= link_to "#{casein_show_icon('th-list')}Back to list".html_safe, casein_admin_users_path %></li>
+        <li><%= link_to "#{casein_show_icon('th-list')} #{t('action.list')}".html_safe, casein_admin_users_path %></li>
     <% end %>
 <% end %>

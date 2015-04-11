@@ -1,10 +1,6 @@
 ---
 
 zh-CN:
-  view:
-    order: '看看 我的东西'
-  create:
-    order: '下单'
   order:
     name: '买的什么呀'
     amount: '要几个'
@@ -19,14 +15,22 @@ zh-CN:
     role: '权限'
     password: "密码"
     remember_me: "记住密码"
+    phone: "联系电话"
+    repeat_password: "重新输入一次"
+    random_password: "随机密码"
+    address: "地址"
+    new_password: "新密码"
   action:
     cancel: '算了'
-    create: '赶紧发货'
+    create_order: '赶紧发货'
+    view_order: "查看订单"
     edit: '确定咯'
     list: '返回列表'
     reset_password: '重置密码'
     confirm_delete_order: "確定要取消訂單嗎？"
     forget_password: "忘记密码了？"
+    create_user: "添加用户"
+    view_user: "用户资料"
   menu:
     orders: '訂單記錄'
     new_order: "下单"

@@ -22,8 +22,6 @@
 en:
   view:
     order: 'Orders'
-  create:
-    order: 'Add a new order'
   order:
     name: 'Name'
     amount: 'Quantity'
@@ -38,20 +36,28 @@ en:
     role: 'Role'
     password: "Password"
     remember_me: "Remember me"
+    phone: "Phone"
+    repeat_password: "Repeat password"
+    random_password: "Generate random password"
+    address: "Address"
+    new_password: "New password"
   action:
     cancel: 'Cancel'
-    create: 'Add a new order'
+    create_order: 'Add a new order'
+    view_order: "View Order"
     edit: 'Save changes'
     list: 'Back to list'
     reset_password: 'Reset password'
     confirm_delete_order: "Are you sure you want to delete this order?"
     forget_password: "Forgotten password?"
+    create_user: "Add a new user"
+    view_user: "View User"
   menu:
     orders: 'Orders'
     new_order: "New Order"
     profile: "Profile"
     sign_out: "Sign out"
-    sign_in: "Sign in"
+    sign_in: "Signin"
     users: "Users"
   list:
     order:
