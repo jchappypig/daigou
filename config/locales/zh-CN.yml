@@ -1,0 +1,25 @@
+---
+
+zh-CN:
+  view:
+    order: '看看 我的东西'
+  create:
+    order: '下单'
+  order:
+    name: '买的什么呀'
+    amount: '要几个'
+    comment: '要说点啥不'
+  action:
+    cancel: '算了'
+    create: '赶紧发货'
+    edit: '确定咯'
+    list: '返回列表'
+  menu:
+    orders: '我的訂單'
+  list:
+    order:
+      name: '商品'
+      amount: '数量'
+      paid: '付款状态'
+      status: '订单状态'
+      user: '买家'
