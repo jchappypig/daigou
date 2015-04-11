@@ -8,7 +8,7 @@ module Casein
     # before_filter :needs_admin_or_current_user, :only => [:action1, :action2]
   
     def index
-      @casein_page_title = 'Orders'
+      @casein_page_title = t('menu.orders')
       if current_user.is_admin?
   		  @orders = Order.all
       else
@@ -73,7 +73,7 @@ module Casein
         flash[:notice] = t('message.cancel_order_success')
         redirect_to casein_orders_path
       else
-        flash.now[:warning] = 'There were problems when trying to cancel this order'
+        flash.now[:warning] = t('message.cancel_order_fail')
         render :action => :index
       end
     end
