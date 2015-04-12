@@ -30,6 +30,7 @@ en:
     has_paid: 'Paid'
   user:
     username: 'Username'
+    username_hint: ' '
     name: 'Name'
     email: 'Email'
     time_zone: 'Time zone'

@@ -9,6 +9,7 @@ zh-CN:
     has_paid: '付款状态'
   user:
     username: '用户名'
+    username_hint: '（字母或数字）'
     name: '本尊姓名'
     email: '电邮'
     time_zone: '时区'

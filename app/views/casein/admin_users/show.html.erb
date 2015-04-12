@@ -4,7 +4,7 @@
 
     <div class="row">
       <div class="col-lg-6">
-        <%= casein_text_field f, f.object, :login, {:size => 30, :casein_label => t('user.username')} %>
+        <%= casein_text_field f, f.object, :login, {:size => 30, :casein_label => "#{t('user.username')} #{t('user.username_hint')}"} %>
       </div>
       <div class="col-lg-6">
         <%= casein_text_field f, f.object, :name, {:casein_label => t('user.name')} %>
