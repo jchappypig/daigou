@@ -34,6 +34,7 @@ zh-CN:
     view_user: "用户资料"
     sign_up: "注册"
     view_product: "商品信息"
+    search: "搜索"
   menu:
     orders: '訂單記錄'
     new_order: "下单"
@@ -101,6 +102,7 @@ zh-CN:
     confirm_delete_product: "！！確定要永久删除产品嗎？"
     confirm_delete_order: "！！確定要永久删除訂單嗎？"
     confirm_cancel_order: "確定要取消訂單嗎？"
+    product_search: "商品名称"
   activerecord:
     errors:
       models:
