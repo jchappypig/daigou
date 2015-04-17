@@ -4,7 +4,7 @@ module Casein
   class OrdersController < Casein::CaseinController
   
     ## optional filters for defining usage according to Casein::AdminUser access_levels
-    # before_filter :needs_admin, :except => [:action1, :action2]
+    before_filter :needs_admin, :only => [:destroy]
     # before_filter :needs_admin_or_current_user, :only => [:action1, :action2]
   
     def index
@@ -33,7 +33,13 @@ module Casein
 
     def create
       @order = Order.new order_params
-      @order.casein_admin_user_id = order_params[:casein_admin_user_id] || current_user.id
+
+      if current_user.is_admin?
+        @order.casein_admin_user_id = order_params[:casein_admin_user_id] || current_user.id
+      else
+        @order.casein_admin_user = current_user
+      end
+      
       @order.status = @order.status ? @order.status : Order::STATUS.first
     
       if @order.save
