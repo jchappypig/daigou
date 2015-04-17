@@ -28,11 +28,12 @@ module Casein
     def new
       @casein_page_title = t('action.create_order')
     	@order = Order.new
+      @order.casein_admin_user = current_user
     end
 
     def create
       @order = Order.new order_params
-      @order.casein_admin_user = current_user
+      @order.casein_admin_user_id = order_params[:casein_admin_user_id] || current_user.id
       @order.status = @order.status ? @order.status : Order::STATUS.first
     
       if @order.save
@@ -84,7 +85,7 @@ module Casein
     private
       
       def order_params
-        params.require(:order).permit(:name, :amount, :has_paid, :status, :comment)
+        params.require(:order).permit(:name, :amount, :has_paid, :status, :comment, :casein_admin_user_id)
       end
 
   end

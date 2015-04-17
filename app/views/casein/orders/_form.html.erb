@@ -24,4 +24,9 @@
         <%= casein_check_box f, f.object, :has_paid, {casein_label: t('order.has_paid')} %>
       </div>
     </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <%= casein_collection_select f, f.object, 'order', :casein_admin_user_id, Casein::AdminUser.all, :id, :name, {casein_label: t('list.order.user')} %>
+      </div>
+    </div>
 <% end %>
