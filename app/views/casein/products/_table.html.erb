@@ -15,10 +15,10 @@
 
   <% products.each do |product| %>
       <tr>
-        <td><%= casein_table_cell_link product.name, casein_product_path(product) %></td>
-        <td><%= casein_table_cell_link product.description, casein_product_path(product) %></td>
-        <td><%= casein_table_cell_link product.link, casein_product_path(product) %></td>
-        <td><%= casein_table_cell_link product.category, casein_product_path(product) %></td>
+        <td><%= casein_table_cell_link product.name, current_user.is_admin? ? casein_product_path(product) : product.link %></td>
+        <td><%= casein_table_cell_link product.description, current_user.is_admin? ? casein_product_path(product) : product.link %></td>
+        <td><%= casein_table_cell_link product.link, current_user.is_admin? ? casein_product_path(product) : product.link %></td>
+        <td><%= casein_table_cell_link product.category, current_user.is_admin? ? casein_product_path(product) : product.link %></td>
         <% if current_user.is_admin? %>
             <td class="delete">
               <%= link_to(casein_show_row_icon('stop'), casein_product_path(product), :method => :delete, :data => {:confirm => t('message.confirm_delete_product')}) %>
