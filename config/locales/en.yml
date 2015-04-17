@@ -23,7 +23,8 @@ en:
   view:
     order: 'Orders'
   order:
-    name: 'Name'
+    product: 'Name'
+    name: "Couldn't find product? Input here"
     amount: 'Quantity'
     comment: 'Comment'
     status: 'Status'

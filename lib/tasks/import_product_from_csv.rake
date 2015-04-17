@@ -9,7 +9,7 @@ namespace :db do
       worksheet = file.worksheet 0
 
       worksheet.each do |row|
-        if row[1].present?
+        if row[1].present? && ! Product.find_by_name(row[0])
           product = Product.new
           product.name = row[0]
           product.category = row[1]

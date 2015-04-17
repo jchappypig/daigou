@@ -6,4 +6,5 @@
 
 $(document).ready(function() {
     $("#order_casein_admin_user_id").select2();
+    $("#order_product_id").select2();
 });

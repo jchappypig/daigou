@@ -2,7 +2,8 @@
 
 zh-CN:
   order:
-    name: '买的什么呀'
+    product: '买的什么呀'
+    name: '呀，商品还没录入，手动输入'
     amount: '要几个'
     comment: '要补充点啥不'
     status: '订单状态'
