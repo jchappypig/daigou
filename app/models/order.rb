@@ -31,4 +31,8 @@ class Order < ActiveRecord::Base
     end
     posted_values
   end
+
+  def product_name
+    (product && product.name) || name
+  end
 end

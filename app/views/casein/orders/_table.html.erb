@@ -19,7 +19,7 @@
 
   <% orders.each do |order| %>
       <tr>
-        <td><%= casein_table_cell_link order.name, casein_order_path(order) %></td>
+        <td><%= casein_table_cell_link order.product_name, casein_order_path(order) %></td>
         <td><%= casein_table_cell_link order.amount, casein_order_path(order) %></td>
         <td><%= casein_table_cell_link casein_show_row_icon(true_or_false_icon(order.has_paid)), casein_order_path(order) %></td>
         <td><%= casein_table_cell_link order.status, casein_order_path(order) %></td>

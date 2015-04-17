@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-lg-6">
-    <%= casein_collection_select f, f.object, :order, :product_id, Product.all, :id, :name, {casein_label: t('order.product')} %>
+    <%= casein_collection_select f, f.object, :order, :product_id, [Product.empty_selection].concat(Product.all), :id, :name, {casein_label: t('order.product')} %>
   </div>
   <div class="col-lg-6">
     <%= casein_text_field f, f.object, :name, {casein_label: t('order.name')} %>
