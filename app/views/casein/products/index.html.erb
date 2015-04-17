@@ -5,6 +5,22 @@
   <%= casein_pagination_details @products %>
 </h2>
 
+<div class="row">
+  <div class="col-lg-6">
+  </div>
+  <div class="col-lg-6">
+    <%= form_tag casein_products_path, :method => 'get' do %>
+        <div class="input-group">
+          <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search for...' %>
+          <span class="input-group-btn">
+        <%= submit_tag "Search", :name => nil, class: 'btn btn-primary' %>
+      </span>
+        </div>
+    <% end %>
+  </div>
+</div>
+<br />
+<br />
 <%= render :partial => 'casein/products/table', :locals => {:products => @products} %>
 
 <div class="text-center">

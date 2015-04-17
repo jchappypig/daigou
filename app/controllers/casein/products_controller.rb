@@ -9,7 +9,7 @@ module Casein
 
     def index
       @casein_page_title = t('menu.products')
-      @products = Product.order(sort_order(:name)).paginate :page => params[:page]
+      @products = Product.with_name(params[:search]).order(sort_order(:name)).paginate :page => params[:page]
     end
 
     def show
