@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415223527) do
+ActiveRecord::Schema.define(version: 20150417135900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,9 +50,11 @@ ActiveRecord::Schema.define(version: 20150415223527) do
     t.integer  "casein_admin_user_id"
     t.text     "comment"
     t.boolean  "cancelled",            default: false
+    t.integer  "product_id"
   end
 
   add_index "orders", ["casein_admin_user_id"], name: "index_orders_on_casein_admin_user_id", using: :btree
+  add_index "orders", ["product_id"], name: "index_orders_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"

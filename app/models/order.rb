@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :casein_admin_user, class_name: Casein::AdminUser
+  belongs_to :product
 
   validates :name, presence: true
   validates :amount, presence: true
