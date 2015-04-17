@@ -1,20 +1,8 @@
 Rails.application.routes.draw do
-
+  #Casein routes
   namespace :casein do
-  get 'errors/file_not_found'
-  end
-
-  namespace :casein do
-  get 'errors/unprocessable'
-  end
-
-  namespace :casein do
-  get 'errors/internal_server_error'
-  end
-
-	#Casein routes
-	namespace :casein do
-		resources :orders do
+    resources :products
+    resources :orders do
       post '/' => 'orders#cancel'
     end
 
@@ -24,7 +12,7 @@ Rails.application.routes.draw do
         post 'sign_up' => 'admin_users#create_after_sign_up'
       end
     end
-	end
+  end
 
   root 'casein/orders#index'
 

@@ -29,12 +29,11 @@ zh-CN:
     edit: '确定咯'
     list: '返回列表'
     reset_password: '重置密码'
-    confirm_delete_order: "！！確定要永久訂單嗎？"
-    confirm_cancel_order: "確定要取消訂單嗎？"
     forget_password: "忘记密码了？"
     create_user: "添加用户"
     view_user: "用户资料"
     sign_up: "注册"
+    view_product: "商品信息"
   menu:
     orders: '訂單記錄'
     new_order: "下单"
@@ -45,6 +44,8 @@ zh-CN:
     sign_up: "注册"
     new_orders: "新下單記錄"
     posted_orders: "已寄出訂單記錄"
+    products: "商品列表"
+    new_product: '添加商品'
   list:
     order:
       name: '商品'
@@ -65,11 +66,18 @@ zh-CN:
     unknown_token: "您输入的网址不对哦。请从邮件复制粘贴过来。"
     welcome: "欢迎"
     hello: "您好"
+    create_order_success: "下单成功，等着发货吧。"
     create_order_fail: "呀，下单没成功。请稍后再试。"
     update_order_success: "订单修改成功"
     update_order_fail: "不好意思。订单没有修改成功哦。请稍后再试。"
     delete_order_success: "已删除订单"
     cancel_order_success: "已取消订单"
+    cancel_order_fail: "不好意思。订单没有取消成功哦。请稍后再试。"
+    create_product_success: "添加商品成功，等着发货吧。"
+    create_product_fail: "呀，添加商品没成功。请稍后再试。"
+    update_product_success: "商品修改成功"
+    update_product_fail: "不好意思。商品没有修改成功哦。请稍后再试。"
+    delete_product_success: "已删除商品"
     create_user_success_part1: "添加成功。用户名和密码，已通过邮件方式发送给"
     create_user_success_part2: " "
     create_user_fail: "不好意思。用户没有添加成功。请稍后再试 "
@@ -80,8 +88,6 @@ zh-CN:
     update_password_success: "密码修改成功。"
     update_password_fail: "不好意思。密码修改没有成功哦。请稍后再试。"
     has_been_deleted: "已删除成功。"
-    cancel_order_fail: "不好意思。订单没有取消成功哦。请稍后再试。"
-    create_order_success: "下单成功，等着发货吧。"
     sign_up_success: "恭喜您，您已经注册成功。赶紧下单吧~"
     sign_up_fail: "不好意思，注册失败了哦。请稍后再试。"
     page_not_found: "404 頁面不存在"
@@ -92,6 +98,9 @@ zh-CN:
     internal_server_error_sub: "我們正在儘快查看出錯原因，請稍後再試。"
     unprocessable_error: "無法處理當前請求"
     unprocessable_error_sub: "不好意思，我們無法處理您的請求，請稍後再試。"
+    confirm_delete_product: "！！確定要永久删除产品嗎？"
+    confirm_delete_order: "！！確定要永久删除訂單嗎？"
+    confirm_cancel_order: "確定要取消訂單嗎？"
   activerecord:
     errors:
       models:
@@ -108,9 +117,18 @@ zh-CN:
               too_short: '太短了'
             password_confirmation:
               confirmation: '密码不一致'
-        order:
+        product:
           attributes:
             name:
               blank: '不能为空'
             amount:
               blank: '不能为空'
+        product:
+          attributes:
+            name:
+              blank: '不能为空'
+  product:
+    name: "名称"
+    description: "描述"
+    link: "微店链接"
+    category: "分类"

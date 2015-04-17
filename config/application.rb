@@ -34,7 +34,7 @@ module Daigou
     config.time_zone = 'Beijing'
 
     I18n.config.enforce_available_locales = false
-    I18n.default_locale = :'zh-CN'
+    I18n.default_locale = 'zh-CN'
 
     config.exceptions_app = self.routes
   end

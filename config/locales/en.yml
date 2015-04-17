@@ -50,11 +50,10 @@ en:
     edit: 'Save changes'
     list: 'Back to list'
     reset_password: 'Reset password'
-    confirm_delete_order: "Are you sure you want to delete this order?"
-    confirm_cancel_order: "Are you sure you want to cancel this order?"
     forget_password: "Forgotten password?"
     create_user: "Add a new user"
     view_user: "View User"
+    view_product: "View product"
     sign_up: "Sign up"
     log_in: "Existing user"
   menu:
@@ -67,6 +66,8 @@ en:
     sign_up: "Register"
     new_orders: "New orders"
     posted_orders: "Posted orders"
+    products: "Products"
+    new_product: 'Add a new product'
   list:
     order:
       name: 'Name'
@@ -87,11 +88,18 @@ en:
     unknown_token: "Your account could not be located. Try to copy and paste the URL directly from the email."
     welcome: "Welcome"
     hello: "Hello"
+    create_order_success: "Order created"
     create_order_fail: "There were problems when trying to create a new order"
     update_order_success: "Order has been updated"
     update_order_fail: "There were problems when trying to update this order"
     delete_order_success: "Order has been deleted"
     cancel_order_success: "Order has been cancelled"
+    cancel_order_fail: "There were problems when trying to cancel this order"
+    create_product_success: "Product created"
+    create_product_fail: "There were problems when trying to create a new product"
+    update_product_success: "Product has been updated"
+    update_product_fail: "There were problems when trying to update this product"
+    delete_product_success: "Product has been deleted"
     create_user_success_part1: "An email has been sent to "
     create_user_success_part2: " with the new account details"
     create_user_fail: "There were problems when trying to create a new user"
@@ -102,8 +110,6 @@ en:
     update_password_success: "Your password has been changed"
     update_password_fail: "There were problems when trying to change your password"
     has_been_deleted: " has been deleted"
-    cancel_order_fail: "There were problems when trying to cancel this order"
-    create_order_success: "Order created"
     sign_up_success: "Sign up successfully"
     sign_up_fail: "There were problems when trying to sign up"
     page_not_found: "404 Page not found"
@@ -114,3 +120,11 @@ en:
     internal_server_error_sub: "We will have a look the problem as soon as possible. Please try again later."
     unprocessable_error: "Not processable"
     unprocessable_error_sub: "Sorry, we are unable to process your request. Please try again later."
+    confirm_delete_product: "Are you sure you want to delete this product?"
+    confirm_delete_order: "Are you sure you want to delete this order?"
+    confirm_cancel_order: "Are you sure you want to cancel this order?"
+  product:
+    name: "Name"
+    description: "Description"
+    link: "Wechat Link"
+    category: "Category"

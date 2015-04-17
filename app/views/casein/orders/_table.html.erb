@@ -9,9 +9,11 @@
     <th><%= casein_sort_link t('list.order.status'), :status %></th>
     <% if current_user.is_admin? %>
         <th><%= casein_sort_link t('list.order.user'), :casein_admin_user_id %></th>
-        <th><%= casein_sort_link t('list.order.cancelled'), :cancelled %></th>
     <% end %>
-    <th>&nbsp;</th>
+    <th><%= casein_sort_link t('list.order.cancelled'), :cancelled %></th>
+    <% if current_user.is_admin? %>
+        <th>&nbsp;</th>
+    <% end %>
   </tr>
   </thead>
 
@@ -27,13 +29,13 @@
         <% end %>
         <td class="cancel">
           <% if !order.is_posted? %>
-              <%= link_to(casein_show_row_icon('pause'), casein_order_path(order), :method => :cancel, :data => {:confirm => t('action.confirm_cancel_order')}) %>
+              <%= link_to(casein_show_row_icon('pause'), casein_order_path(order), :method => :cancel, :data => {:confirm => t('message.confirm_cancel_order')}) %>
 
           <% end %>
         </td>
         <% if current_user.is_admin? %>
             <td class="delete">
-              <%= link_to(casein_show_row_icon('stop'), casein_order_path(order), :method => :delete, :data => {:confirm => t('action.confirm_delete_order')}) %>
+              <%= link_to(casein_show_row_icon('stop'), casein_order_path(order), :method => :delete, :data => {:confirm => t('message.confirm_delete_order')}) %>
             </td>
         <% end %>
       </tr>
