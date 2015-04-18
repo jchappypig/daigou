@@ -70,6 +70,7 @@ en:
     posted_orders: "Posted orders"
     products: "Products"
     new_product: 'Add a new product'
+    needs_product_input_orders: "Missing product orders"
   list:
     order:
       name: 'Name'

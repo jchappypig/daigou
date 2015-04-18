@@ -48,6 +48,7 @@ zh-CN:
     posted_orders: "已寄出訂單記錄"
     products: "商品列表"
     new_product: '添加商品'
+    needs_product_input_orders: "含未錄入商品的訂單記錄"
   list:
     order:
       name: '商品'

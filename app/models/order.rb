@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   validate :product_name_must_be_present
 
   def product_name_must_be_present
-    if ! product_name.present?
+    if !product_name.present?
       errors.add(:product_id, I18n.t('activerecord.errors.models.order.attributes.name.blank'))
     end
   end
@@ -17,12 +17,16 @@ class Order < ActiveRecord::Base
   scope :active, -> { where(cancelled: false) }
   scope :posted, ->(posted) do
     if posted.nil?
-      Order.all.order(created_at: :desc)
+      self.all.order(created_at: :desc)
     elsif posted.downcase == 'true'
       where('status = ? OR status = ?', Order.get_all_posted_values.first, Order.get_all_posted_values.last)
     else
       where.not('status = ? OR status = ?', Order.get_all_posted_values.first, Order.get_all_posted_values.last).active.order(:casein_admin_user_id)
     end
+  end
+
+  scope :needs_product_input, ->(needs_product_input = true) do
+    needs_product_input ?  where(product_id: nil).order(:name) : self.all
   end
 
   def is_posted?
