@@ -120,10 +120,10 @@ zh-CN:
               too_short: '太短了'
             password_confirmation:
               confirmation: '密码不一致'
-        product:
+        order:
           attributes:
             name:
-              blank: '不能为空'
+              blank: '请选择或在下个表单域手动输入'
             amount:
               blank: '不能为空'
         product:

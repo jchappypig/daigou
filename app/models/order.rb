@@ -2,13 +2,18 @@ class Order < ActiveRecord::Base
   belongs_to :casein_admin_user, class_name: Casein::AdminUser
   belongs_to :product
 
-  validates :name, presence: true
   validates :amount, presence: true
+
+  validate :product_name_must_be_present
+
+  def product_name_must_be_present
+    errors.add(:product_id, I18n.t('activerecord.errors.models.order.attributes.name.blank'))
+  end
 
   STATUS = [I18n.t('status.new'), I18n.t('status.posted')]
 
   scope :active, -> { where(cancelled: false) }
-  scope :posted, ->(posted)  do
+  scope :posted, ->(posted) do
     if posted.nil?
       Order.all.order(created_at: :desc)
     elsif posted.downcase == 'true'
