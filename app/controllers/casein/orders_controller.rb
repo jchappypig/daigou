@@ -15,7 +15,7 @@ module Casein
         @orders = Order.where(casein_admin_user: current_user).active
       end
 
-      @orders = @orders.order(sort_order(:created_at)).paginate :page => params[:page]
+      @orders = @orders.order(sort_order(:created_at, :desc)).paginate :page => params[:page]
 
       session[:return_to] = request.url
     end
