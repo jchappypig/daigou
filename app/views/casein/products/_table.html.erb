@@ -4,8 +4,6 @@
   <thead>
   <tr>
     <th><%= casein_sort_link t('product.name'), :name %></th>
-    <th><%= casein_sort_link t('product.description'), :description %></th>
-    <th><%= casein_sort_link t('product.link'), :link %></th>
     <th><%= casein_sort_link t('product.category'), :link %></th>
     <% if current_user.is_admin? %>
         <th>&nbsp;</th>
@@ -16,8 +14,6 @@
   <% products.each do |product| %>
       <tr>
         <td><%= casein_table_cell_link product.name, current_user.is_admin? ? casein_product_path(product) : product.link %></td>
-        <td><%= casein_table_cell_link product.description, current_user.is_admin? ? casein_product_path(product) : product.link %></td>
-        <td><%= casein_table_cell_link product.link, current_user.is_admin? ? casein_product_path(product) : product.link %></td>
         <td><%= casein_table_cell_link product.category, current_user.is_admin? ? casein_product_path(product) : product.link %></td>
         <% if current_user.is_admin? %>
             <td class="delete">
