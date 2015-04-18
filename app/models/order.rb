@@ -7,7 +7,9 @@ class Order < ActiveRecord::Base
   validate :product_name_must_be_present
 
   def product_name_must_be_present
-    errors.add(:product_id, I18n.t('activerecord.errors.models.order.attributes.name.blank'))
+    if ! product_name.present?
+      errors.add(:product_id, I18n.t('activerecord.errors.models.order.attributes.name.blank'))
+    end
   end
 
   STATUS = [I18n.t('status.new'), I18n.t('status.posted')]
