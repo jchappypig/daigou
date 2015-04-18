@@ -11,6 +11,13 @@ namespace :db do
         product.save
       end
 
+      products = Product.with_name('HC')
+      products.each do |product|
+        name = product.name
+        product.name = name.sub('HC', 'Health Care')
+        product.save
+      end
+
       puts 'Products update completed!'
     end
 
