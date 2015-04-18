@@ -17,11 +17,11 @@ class Order < ActiveRecord::Base
   scope :active, -> { where(cancelled: false) }
   scope :posted, ->(posted) do
     if posted.nil?
-      self.all.order(created_at: :desc)
+      self.all
     elsif posted.downcase == 'true'
       where('status = ? OR status = ?', Order.get_all_posted_values.first, Order.get_all_posted_values.last)
     else
-      where.not('status = ? OR status = ?', Order.get_all_posted_values.first, Order.get_all_posted_values.last).active.order(:casein_admin_user_id)
+      where.not('status = ? OR status = ?', Order.get_all_posted_values.first, Order.get_all_posted_values.last).active
     end
   end
 

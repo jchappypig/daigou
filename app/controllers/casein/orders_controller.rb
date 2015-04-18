@@ -10,9 +10,9 @@ module Casein
     def index
       @casein_page_title = t('menu.orders')
       if current_user.is_admin?
-  		  @orders = Order.posted(params[:posted]).needs_product_input(params[:needs_product_input]).order(:cancelled, status: :desc, created_at: :desc)
+  		  @orders = Order.posted(params[:posted]).needs_product_input(params[:needs_product_input])
       else
-        @orders = Order.where(casein_admin_user: current_user).active.order(created_at: :desc)
+        @orders = Order.where(casein_admin_user: current_user).active
       end
 
       @orders = @orders.order(sort_order(:created_at)).paginate :page => params[:page]
