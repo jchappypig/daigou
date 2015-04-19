@@ -60,7 +60,7 @@ class Order < ActiveRecord::Base
   def send_update_notification
     if notify_of_order_posted
       notify_of_order_posted = false
-      Casein::CaseinNotification.order_posted_information(casein_config_email_from_address, casein_admin_user, casein_config_hostname, self).deliver
+      Casein::CaseinNotification.delay.order_posted_information(casein_config_email_from_address, casein_admin_user, casein_config_hostname, self)
     end
   end
 end

@@ -37,5 +37,6 @@ module Daigou
     I18n.default_locale = 'zh-CN'
 
     config.exceptions_app = self.routes
+    config.active_job.queue_adapter = :delayed_job
   end
 end
