@@ -1,0 +1,12 @@
+亲爱的 <%= @name %>,<br />
+<br />
+您在 <%= @bought_date %> 時購買的[<%= @product_name %>]已經幫您寄出了！請注意查收哦~
+<br />
+请通过以下鏈接查看您的訂單信息:<br />
+<br />
+<%= link_to @order_url, @order_url %>
+<br />
+<br />
+爱您的<br />
+<br />
+<%= @from_text %>

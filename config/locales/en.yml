@@ -132,3 +132,8 @@ en:
     description: "Description"
     link: "Wechat Link"
     category: "Category"
+  title:
+    reset_password: "New password"
+    new_user: "New user account"
+    reset_password_instructions: "Password reset instructions"
+    order_posted: "Order posted"

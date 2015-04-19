@@ -12,6 +12,10 @@ class Order < ActiveRecord::Base
     end
   end
 
+  attr_accessor :notify_of_order_posted
+
+  after_update :send_update_notification
+
   STATUS = [I18n.t('status.new'), I18n.t('status.posted')]
 
   scope :active, -> { where(cancelled: false) }
@@ -29,10 +33,14 @@ class Order < ActiveRecord::Base
     needs_product_input ?  where(product_id: nil).order(:name) : self.all
   end
 
-  def is_posted?
+  def self.is_it_a_posted_status(status)
     posted_values = Order.get_all_posted_values
 
     return posted_values.include?(status)
+  end
+
+  def is_posted?
+    return Order.is_it_a_posted_status(status)
   end
 
   def self.get_all_posted_values
@@ -45,5 +53,14 @@ class Order < ActiveRecord::Base
 
   def product_name
     (product && product.name) || name
+  end
+
+  private
+
+  def send_update_notification
+    if notify_of_order_posted
+      notify_of_order_posted = false
+      Casein::CaseinNotification.order_posted_information(casein_config_email_from_address, casein_admin_user, casein_config_hostname, self).deliver
+    end
   end
 end

@@ -140,3 +140,8 @@ zh-CN:
   will_paginate:
     previous_label: '上一页'
     next_label: '下一页'
+  title:
+    reset_password: "重置密碼"
+    new_user: "新用戶註冊"
+    reset_password_instructions: "重置密碼申請"
+    order_posted: "訂單已寄出"

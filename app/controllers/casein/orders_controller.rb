@@ -2,15 +2,15 @@
 
 module Casein
   class OrdersController < Casein::CaseinController
-  
+
     ## optional filters for defining usage according to Casein::AdminUser access_levels
     before_filter :needs_admin, :only => [:destroy]
     # before_filter :needs_admin_or_current_user, :only => [:action1, :action2]
-  
+
     def index
       @casein_page_title = t('menu.orders')
       if current_user.is_admin?
-  		  @orders = Order.posted(params[:posted]).needs_product_input(params[:needs_product_input])
+        @orders = Order.posted(params[:posted]).needs_product_input(params[:needs_product_input])
       else
         @orders = Order.where(casein_admin_user: current_user).active
       end
@@ -19,15 +19,15 @@ module Casein
 
       session[:return_to] = request.url
     end
-  
+
     def show
       @casein_page_title = t('action.view_order')
       @order = Order.find params[:id]
     end
-  
+
     def new
       @casein_page_title = t('action.create_order')
-    	@order = Order.new
+      @order = Order.new
       @order.casein_admin_user = current_user
     end
 
@@ -39,9 +39,9 @@ module Casein
       else
         @order.casein_admin_user = current_user
       end
-      
+
       @order.status = @order.status ? @order.status : Order::STATUS.first
-    
+
       if @order.save
         flash[:notice] = t('message.create_order_success')
         redirect_to casein_orders_path
@@ -50,22 +50,25 @@ module Casein
         render :action => :new
       end
     end
-  
+
     def update
       @casein_page_title = t('action.view_order')
-      
+
       @order = Order.find params[:id]
-    
+
+      @order.notify_of_order_posted = (!@order.is_posted? && Order.is_it_a_posted_status(order_params[:status]))
+
       if @order.update_attributes order_params
 
         flash[:notice] = t('message.update_order_success')
         redirect_to casein_orders_path
       else
+
         flash.now[:warning] = t('message.update_order_fail')
         render :action => :show
       end
     end
- 
+
     def destroy
       @order = Order.find params[:id]
 
@@ -87,12 +90,12 @@ module Casein
         redirect_to casein_orders_path
       end
     end
-  
+
     private
-      
-      def order_params
-        params.require(:order).permit(:name, :amount, :has_paid, :status, :comment, :casein_admin_user_id, :product_id)
-      end
+
+    def order_params
+      params.require(:order).permit(:name, :amount, :has_paid, :status, :comment, :casein_admin_user_id, :product_id)
+    end
 
   end
 end
