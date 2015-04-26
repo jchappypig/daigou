@@ -31,4 +31,5 @@
 
 $(document).on('ready page:change', function() {
     analytics.page();
+    analytics.trackForm($('#new_order'), 'Completed Order');
 })
