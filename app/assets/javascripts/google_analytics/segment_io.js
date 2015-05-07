@@ -31,11 +31,5 @@
 
 $(document).on('ready page:change', function() {
     analytics.page();
-    analytics.trackForm($('#new_order'), 'Create Order', {
-        category: 'Orders'
-    });
-    analytics.identify("<%= current_user.id %>", {
-        email: "<%= current_user.email %>",
-        name: "<%= current_user.name %>"
-    });
+    analytics.trackForm($('#new_order'), 'Completed Order');
 })
