@@ -28,7 +28,3 @@
         analytics.page()
     }
 }();
-
-$(document).on('ready page:change', function() {
-    analytics.page();
-})
