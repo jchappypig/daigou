@@ -2,7 +2,7 @@ class SegmentIoWrapper
   class << self
     def analytics
       @analytics ||= Segment::Analytics.new(
-          write_key: Rails.configuration.segment_io_key || ENV['SEGMENT_IO_WRITE_KEY'],
+          write_key: Rails.configuration.try(:segment_io_key) || ENV['SEGMENT_IO_WRITE_KEY'],
           on_error: proc { |_status, msg| fail "SegmentIO Error: #{msg}" }
       )
     end
