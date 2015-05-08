@@ -36,6 +36,7 @@ gem 'rails_12factor', group: :production
 gem 'casein'
 gem 'spreadsheet'
 gem 'select2-rails'
+gem 'analytics-ruby', '~> 2.0.0', require: 'segment/analytics'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

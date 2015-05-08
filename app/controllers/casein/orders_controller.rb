@@ -44,6 +44,8 @@ module Casein
 
       if @order.save
         flash[:notice] = t('message.create_order_success')
+
+        SegmentIoWrapper.track_order
         redirect_to casein_orders_path
       else
         flash.now[:warning] = t('message.create_order_fail')
